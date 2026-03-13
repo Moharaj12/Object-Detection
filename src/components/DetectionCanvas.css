@@ -1,0 +1,136 @@
+.detection-canvas {
+  position: relative;
+  display: inline-block;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  line-height: 0;
+}
+
+.canvas-image {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  display: block;
+}
+
+.bbox {
+  position: absolute;
+  border: 2px solid var(--box-color);
+  border-radius: 3px;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--box-color) 8%, transparent);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.bbox-hovered {
+  z-index: 10;
+  border-width: 2.5px;
+  background: color-mix(in srgb, var(--box-color) 18%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--box-color) 40%, transparent),
+    0 0 16px color-mix(in srgb, var(--box-color) 35%, transparent);
+}
+
+/* Label: dark background for readability on any image */
+.bbox-label {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px 3px 6px;
+  background: rgba(10, 10, 14, 0.82);
+  border-left: 3px solid var(--box-color);
+  color: #f0f0f3;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-radius: 0 0 4px 0;
+  line-height: 1.5;
+  backdrop-filter: blur(4px);
+}
+
+.bbox-score {
+  color: var(--box-color);
+  font-weight: 700;
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+/* Corners — larger and thicker for visibility */
+/* Scan line */
+.bbox-scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--box-color) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bbox-corner {
+  position: absolute;
+  border-style: solid;
+  border-color: var(--box-color);
+}
+
+.bbox-corner.tl {
+  top: -2px;
+  left: -2px;
+  border-width: 3px 0 0 3px;
+  border-radius: 2px 0 0 0;
+}
+.bbox-corner.tr {
+  top: -2px;
+  right: -2px;
+  border-width: 3px 3px 0 0;
+  border-radius: 0 2px 0 0;
+}
+.bbox-corner.bl {
+  bottom: -2px;
+  left: -2px;
+  border-width: 0 0 3px 3px;
+  border-radius: 0 0 0 2px;
+}
+.bbox-corner.br {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 3px 3px 0;
+  border-radius: 0 0 2px 0;
+}
+
+.bbox-dismiss {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 14, 0.82);
+  border: 1px solid var(--box-color);
+  border-radius: 0 0 0 4px;
+  color: var(--box-color);
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+  backdrop-filter: blur(4px);
+}
+
+.bbox-dismiss:hover {
+  background: color-mix(in srgb, var(--box-color) 30%, rgba(10, 10, 14, 0.95));
+  color: #fff;
+}

@@ -1,0 +1,139 @@
+:root {
+  --bg-void: #050507;
+  --bg-surface: #0c0c10;
+  --bg-card: #111116;
+  --bg-elevated: #18181e;
+  --border-dim: #1e1e26;
+  --border-mid: #2a2a34;
+  --text-bright: #e8e8ec;
+  --text-mid: #9090a0;
+  --text-dim: #505060;
+  --accent: #00ff88;
+  --accent-glow: rgba(0, 255, 136, 0.25);
+  --accent-soft: rgba(0, 255, 136, 0.08);
+  --danger: #ff4060;
+  --warning: #ffaa00;
+  --info: #4488ff;
+  --font-body: "Sora", sans-serif;
+  --font-mono: "Azeret Mono", monospace;
+}
+.btn-detect {
+  padding: 14px 24px;
+  background: var(--accent);
+  color: var(--bg-void);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.btn-detect:hover:not(:disabled) {
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+.btn-detect:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-reset {
+  padding: 14px 20px;
+  background: transparent;
+  color: var(--text-mid);
+  border: 1px solid var(--border-mid);
+  border-radius: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-reset:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.workspace {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 12px;
+}
+
+.controls-bar {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.error-msg {
+  color: var(--danger);
+  margin-top: 12px;
+  font-size: 14px;
+  font-family: var(--font-mono);
+}
+
+.results-list {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 500px;
+  width: 100%;
+}
+
+.results-title {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.result-item {
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.result-score {
+  color: var(--text-dim);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-void);
+  color: var(--text-bright);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-void);
+}
